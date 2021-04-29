@@ -1,0 +1,164 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/xecua/trapyojo-apigateway/1.0.0
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: trapyojo API gateway
+  contact:
+    email: courser4848@gmail.com
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+tags:
+  - name: generate
+    description: 会話の生成
+  - name: twitter
+    description: Twitterとのやりとりをする
+paths:
+  /monologue:
+    get:
+      tags:
+        - generate
+      summary: ひとりごとの生成
+      description: |
+        ひとりごとを生成し、返却します(主にtraQ bot用)
+      operationId: getMonologue
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monologue'
+  /reply:
+    get:
+      tags:
+        - generate
+      summary: 返答の生成
+      description: |
+        リプライを生成し、返却します(主にtraQ bot用)
+      operationId: getReply
+      parameters:
+        - $ref: '#/components/parameters/textInQuery'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reply'
+  /timeline:
+    get:
+      tags:
+        - twitter
+      summary: TLの取得
+      description: ホームTLを取得し、返却します
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    schema:
+                      $ref: '#/components/schemas/Tweet'
+  /replies:
+    get:
+      tags:
+        - twitter
+      summary: リプライの取得
+      description: リプライを取得し、返却します
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    schema:
+                      $ref: '#/components/schemas/Tweet'
+  /tweet_monologue:
+    post:
+      tags:
+        - generate
+        - twitter
+      summary: ひとりごとを生成し、ツイート
+      operationId: tweetMonologue
+      responses:
+        '200':
+          description: 生成およびツイートに成功
+  /tweet_reply:
+    post:
+      tags:
+        - generate
+        - twitter
+      summary: リプライを生成し、ツイート
+      operationId: postTweetReply
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postTweetReply'
+      responses:
+        '200':
+          description: 生成およびツイートに成功
+components:
+  parameters:
+    textInQuery:
+      name: text
+      in: query
+      required: true
+      description: 返答したいテキスト
+      schema:
+        type: string
+      example: キレた
+  schemas:
+    Monologue:
+      type: object
+      required:
+        - content
+      properties:
+        content:
+          type: string
+          example: 肛門を動かしてみよう
+    Reply:
+      type: object
+      required:
+        - content
+      properties:
+        content:
+          type: string
+          example: は?情緒不安定か?ﾏﾝｺﾞｰうまいぜ
+    Tweet:
+      type: object
+      required:
+        - content
+      properties:
+        id:
+          type: string
+          description: ツイートのID
+        content:
+          type: string
+          description: ツイートの内容
+    postTweetReply:
+      type: object
+      required:
+        - text
+        - replyTo
+      properties:
+        text:
+          type: string
+          example: キレた
+        replyTo:
+          type: string
+          description: リプライするツイートのID
+          example: hukuda222
