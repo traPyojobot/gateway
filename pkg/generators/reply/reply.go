@@ -1,10 +1,14 @@
 package reply
 
+type ReplyUser struct {
+	UserName string
+	UserID   string
+}
 type ReplyMessage interface {
 	GetUser()
-	GetMessage()
-	GetProperties()
+	GetMessage() string
+	GetProperties() interface{}
 }
-
-func GenerateReply() {}
-func sendGenerator() {}
+type ReplyService interface {
+	GenerateReply(m ReplyMessage) ReplyMessage
+}
