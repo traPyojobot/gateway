@@ -5,7 +5,7 @@ type ReplyUser struct {
 	UserID   string
 }
 type ReplyMessage interface {
-	GetUser()
+	GetUser() ReplyUser
 	GetMessage() string
 	GetProperties() interface{}
 }
