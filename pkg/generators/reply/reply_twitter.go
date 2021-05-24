@@ -18,6 +18,10 @@ func (t *TwitterReply) GetUserID() string {
 func (t *TwitterReply) GetMessage() string {
 	return t.Message
 }
+func (t *TwitterReply) SetMessage(m string) {
+	t.Message = m
+	return
+}
 func (t *TwitterReply) GetProperties() map[string]interface{} {
 	return t.Properties
 }
