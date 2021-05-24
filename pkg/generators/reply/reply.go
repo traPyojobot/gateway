@@ -7,7 +7,7 @@ type ReplyUser struct {
 type ReplyMessage interface {
 	GetUser() ReplyUser
 	GetMessage() string
-	GetProperties() interface{}
+	GetProperties() map[string]interface{}
 }
 type ReplyService interface {
 	GenerateReply(m ReplyMessage) ReplyMessage
