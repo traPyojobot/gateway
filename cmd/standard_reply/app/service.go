@@ -4,10 +4,10 @@ import (
 	"github.com/traPyojobot/gateway/pkg/generators/reply"
 )
 
-type StanderdReply struct {
-	MLGroup []string
+type standerdReply struct {
+	MlSetvice string
 }
 
-func (s *StanderdReply) GenerateReply(m reply.ReplyMessage) reply.ReplyMessage {
+func (s *standerdReply) GenerateReply(m reply.ReplyMessage) reply.ReplyMessage {
 
 }

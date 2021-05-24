@@ -2,12 +2,17 @@ package reply
 
 type TwitterReply struct {
 	Message    string
-	User       ReplyUser
+	UserID     string
+	UserName   string
 	Properties map[string]interface{}
 }
 
-func (t *TwitterReply) GetUser() ReplyUser {
-	return t.User
+func (t *TwitterReply) GetUserName() string {
+	return t.UserName
+}
+
+func (t *TwitterReply) GetUserID() string {
+	return t.UserID
 }
 
 func (t *TwitterReply) GetMessage() string {

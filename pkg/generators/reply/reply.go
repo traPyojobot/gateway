@@ -1,11 +1,8 @@
 package reply
 
-type ReplyUser struct {
-	UserName string
-	UserID   string
-}
 type ReplyMessage interface {
-	GetUser() ReplyUser
+	GetUserName() string
+	GetUserID() string
 	GetMessage() string
 	GetProperties() map[string]interface{}
 }
