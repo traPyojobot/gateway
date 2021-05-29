@@ -3,7 +3,6 @@ package proxy
 import (
 	"bytes"
 	"io/ioutil"
-	"math/rand"
 	"net/http"
 )
 
@@ -15,7 +14,7 @@ const (
 var allMLModel map[string][]mlModel //TODO 読み込み処理を書く
 
 func (m *mlModel) sendRequest(json []byte) ([]byte, error) {
-	resp, err := http.Post(m.Url.String(), "application/json", bytes.NewBuffer(json))
+	resp, err := http.Post("http://postman.hijiki51.trap.show/", "application/json", bytes.NewBuffer(json)) //仮配置
 	if err != nil {
 		return nil, err
 	}
@@ -28,8 +27,9 @@ func (m *mlModel) sendRequest(json []byte) ([]byte, error) {
 }
 
 func CreateMessageByGroup(group string, json []byte) ([]byte, error) {
-	ms := allMLModel[group]
-	m := ms[rand.Intn(len(ms))]
+	// ms := allMLModel[group]
+	// m := ms[rand.Intn(len(ms))]//一時的にコメントアウト
+	m := mlModel{}
 	resp, err := m.sendRequest(json)
 	if err != nil {
 		return nil, err

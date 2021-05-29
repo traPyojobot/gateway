@@ -12,6 +12,9 @@ type replyRequest struct {
 	UserName string `json:"user_name"`
 	Text     string `json:"text"`
 }
+type replyResponce struct {
+	Text string `json:"message"`
+}
 
 func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプロパティは切り捨てる
 	req := &replyRequest{
@@ -27,13 +30,13 @@ func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプ
 	if err != nil {
 		return nil, err
 	}
-	var text string
+	text := replyResponce{}
 	err = json.Unmarshal(b, &text)
 	if err != nil {
 		return nil, err
 	}
 	res := &model.Message{
-		Text: text,
+		Text: text.Text,
 	}
 	return res, nil
 }
