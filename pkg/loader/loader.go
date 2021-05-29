@@ -4,40 +4,40 @@ import (
 	"io/ioutil"
 	"net/url"
 
-	"github.com/traPyojobot/gateway/pkg/proxy"
+	"github.com/traPyojobot/gateway/pkg/model"
 	"gopkg.in/yaml.v3"
 )
 
 const configPath = "../../config/models.yaml"
 
-type model struct {
+type mlmodel struct {
 	Name string `yaml:"name"`
 	Url  string `yaml:"url"`
 }
 
 type group struct {
-	GroupName string  `yaml:"name"`
-	Model     []model `yaml:"model,inline"`
+	GroupName string    `yaml:"name"`
+	Model     []mlmodel `yaml:"model,inline"`
 }
 
 type Config struct {
 	Group []group `yaml:"group,inline"`
 }
 
-func LoadMLModel() (map[string][]proxy.MLModel, error) {
-	var res map[string][]proxy.MLModel
+func LoadMLModel() (map[string][]model.MLModel, error) {
+	var res map[string][]model.MLModel
 	c, err := loadConfig()
 	if err != nil {
 		return nil, err
 	}
 	for _, g := range c.Group {
-		var s []proxy.MLModel
+		var s []model.MLModel
 		for _, m := range g.Model {
 			u, err := url.Parse(m.Url)
 			if err != nil {
 				return nil, err
 			}
-			s = append(s, proxy.MLModel{
+			s = append(s, model.MLModel{
 				Name: m.Name,
 				Url:  u,
 			})
@@ -45,7 +45,6 @@ func LoadMLModel() (map[string][]proxy.MLModel, error) {
 		res[g.GroupName] = s
 	}
 	return res, nil
-
 }
 
 func loadConfig() (*Config, error) {
