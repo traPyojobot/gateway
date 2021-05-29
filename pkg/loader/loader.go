@@ -8,7 +8,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-const configPath = "../../config/models.yaml"
+const configPath = "./config/models.yaml"
 
 type mlmodel struct {
 	Name string `yaml:"name"`
