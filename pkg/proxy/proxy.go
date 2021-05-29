@@ -2,7 +2,7 @@ package proxy
 
 import "net/url"
 
-type MLModel struct {
+type mlModel struct {
 	Name  string
 	Group string
 	Url   url.URL

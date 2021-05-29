@@ -12,9 +12,9 @@ const (
 	GroupMonologue = "monologue" //TODO 読み込み処理を書く
 )
 
-var allMLModel map[string][]MLModel //TODO 読み込み処理を書く
+var allMLModel map[string][]mlModel //TODO 読み込み処理を書く
 
-func (m *MLModel) sendRequest(json []byte) ([]byte, error) {
+func (m *mlModel) sendRequest(json []byte) ([]byte, error) {
 	resp, err := http.Post(m.Url.String(), "application/json", bytes.NewBuffer(json))
 	if err != nil {
 		return nil, err
