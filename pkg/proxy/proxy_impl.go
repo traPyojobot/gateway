@@ -12,27 +12,10 @@ const (
 	GroupMonologue = "monologue" //TODO 読み込み処理を書く
 )
 
-var allMLModel map[string][]model //TODO 読み込み処理を書く
-type model struct {
-	Name  string
-	Group string
-	Url   string
-}
+var allMLModel map[string][]mlModel //TODO 読み込み処理を書く
 
-func (m *model) getMLName() string {
-	return m.Name
-}
-
-func (m *model) getMLGroup() string {
-	return m.Group
-}
-
-func (m *model) getUrl() string {
-	return m.Url
-}
-
-func (m *model) sendRequest(json []byte) ([]byte, error) {
-	resp, err := http.Post(m.Url, "application/json", bytes.NewBuffer(json))
+func (m *mlModel) sendRequest(json []byte) ([]byte, error) {
+	resp, err := http.Post(m.Url.String(), "application/json", bytes.NewBuffer(json))
 	if err != nil {
 		return nil, err
 	}
