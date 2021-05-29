@@ -1,7 +1,8 @@
 # writing example
 # group:
-#   - url
-#   - url
+#   - name: ML1
+#     url: url
 
 reply:
-  - http://postman.hijiki51.trap.show/
+  - name: test
+    url: http://postman.hijiki51.trap.show/
