@@ -1,4 +1,4 @@
-package app
+package standerd
 
 import (
 	"encoding/json"
@@ -7,16 +7,13 @@ import (
 	"github.com/traPyojobot/gateway/pkg/proxy"
 )
 
-type standerdReply struct {
-	MlService string
-}
 type replyRequest struct {
 	UserID   string `json:"user_id"`
 	UserName string `json:"user_name"`
 	Text     string `json:"text"`
 }
 
-func (s *standerdReply) GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプロパティは切り捨てる
+func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプロパティは切り捨てる
 	req := &replyRequest{
 		UserID:   m.UserID,
 		UserName: m.UserName,
