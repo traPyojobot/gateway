@@ -8,7 +8,7 @@ import (
 )
 
 type standerdReply struct {
-	MlSetvice string
+	MlService string
 }
 type replyRequest struct {
 	Message  string `json:"message"`

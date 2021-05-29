@@ -1,12 +1,7 @@
 package reply
 
-type ReplyMessage interface {
-	GetUserName() string
-	GetUserID() string
-	GetMessage() string
-	SetMessage(string)
-	GetProperties() map[string]interface{}
-}
+import "github.com/traPyojobot/gateway/pkg/gateway"
+
 type ReplyService interface {
-	GenerateReply(m ReplyMessage) ReplyMessage
+	GenerateReply(m gateway.Message) gateway.Message
 }
