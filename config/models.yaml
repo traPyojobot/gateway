@@ -1,8 +1,11 @@
 # writing example
-# group:
+# name: group-name
+# models:
 #   - name: ML1
 #     url: url
 
-reply:
-  - name: test
-    url: http://postman.hijiki51.trap.show/
+group:
+  name: reply
+  models:
+    - name: test
+      url: http://postman.hijiki51.trap.show/
