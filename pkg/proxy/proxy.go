@@ -37,7 +37,7 @@ func CreateMessageByGroup(group string, json []byte) ([]byte, error) {
 }
 
 func sendRequest(m model.MLModel, json []byte) ([]byte, error) {
-	resp, err := http.Post("http://postman.hijiki51.trap.show/", "application/json", bytes.NewBuffer(json)) //仮配置
+	resp, err := http.Post(m.Url.String(), "application/json", bytes.NewBuffer(json)) //仮配置
 	if err != nil {
 		return nil, err
 	}
