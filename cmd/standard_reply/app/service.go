@@ -3,20 +3,15 @@ package app
 import (
 	"encoding/json"
 
-	"github.com/traPyojobot/gateway/pkg/generators/reply"
+	"github.com/traPyojobot/gateway/pkg/model"
 	"github.com/traPyojobot/gateway/pkg/proxy"
 )
 
 type standerdReply struct {
 	MlService string
 }
-type replyRequest struct {
-	Message  string `json:"message"`
-	UserID   string `json:"user_id"`
-	UserName string `json:"user_name"`
-}
 
-func (s *standerdReply) GenerateReply(m reply.ReplyMessage) (reply.ReplyMessage, error) { //ひとまずプロパティは切り捨てる
+func (s *standerdReply) GenerateReply(m model.Message) (model.Message, error) { //ひとまずプロパティは切り捨てる
 	req := &replyRequest{
 		Message:  m.GetMessage(),
 		UserID:   m.GetUserID(),

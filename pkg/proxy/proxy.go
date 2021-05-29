@@ -1,8 +1,9 @@
 package proxy
 
-type MLModel interface {
-	GetMLName() string
-	GetMLGroup() string
-	GetEndPoint() string
-	SendRequest(string) (string, error)
+import "net/url"
+
+type MLModel struct {
+	Name  string
+	Group string
+	Url   url.URL
 }
