@@ -1,7 +1,7 @@
 package reply
 
-import "github.com/traPyojobot/gateway/pkg/gateway"
+import "github.com/traPyojobot/gateway/pkg/model"
 
 type ReplyService interface {
-	GenerateReply(m gateway.Message) gateway.Message
+	GenerateReply(m model.Message) model.Message
 }
