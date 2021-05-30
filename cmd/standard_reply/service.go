@@ -8,13 +8,13 @@ import (
 	"github.com/traPyojobot/gateway/pkg/proxy"
 )
 
-type replyRequest struct {
+type replyRequest struct { //TODO ちゃんと決める
 	UserID   string `json:"user_id"`
 	UserName string `json:"user_name"`
 	Text     string `json:"text"`
 }
 type replyResponce struct { //TODO ちゃんと決める
-	Text string `json:"message"`
+	Text string `json:"text"`
 }
 
 func GenerateReply(m *model.Message) (*model.Message, error) {
