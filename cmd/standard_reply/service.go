@@ -2,6 +2,7 @@ package standerd
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/traPyojobot/gateway/pkg/model"
 	"github.com/traPyojobot/gateway/pkg/proxy"
@@ -12,7 +13,7 @@ type replyRequest struct {
 	UserName string `json:"user_name"`
 	Text     string `json:"text"`
 }
-type replyResponce struct {
+type replyResponce struct { //TODO ちゃんと決める
 	Text string `json:"message"`
 }
 
@@ -36,7 +37,8 @@ func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプ
 		return nil, err
 	}
 	res := &model.Message{
-		Text: text.Text,
+		Text:      text.Text,
+		CreatedAt: time.Now(),
 	}
 	return res, nil
 }
