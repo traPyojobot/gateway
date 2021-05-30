@@ -28,7 +28,7 @@ func LoadModel() error {
 
 func CreateMessageByGroup(group string, json []byte) ([]byte, error) {
 	ms := mlModel[group]
-	m := ms[rand.Intn(len(ms))]
+	m := ms[rand.Intn(len(ms))] //TODO ここも変えられるようにすると面白いかも
 	resp, err := sendRequest(m, json)
 	if err != nil {
 		return nil, err

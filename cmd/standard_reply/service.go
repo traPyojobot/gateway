@@ -27,7 +27,7 @@ func GenerateReply(m *model.Message) (*model.Message, error) {
 	if err != nil {
 		return nil, err
 	}
-	b, err := proxy.CreateMessageByGroup(proxy.GroupReply, j)
+	b, err := proxy.CreateMessageByGroup(proxy.GroupReply, j) //TODO ここら辺も選べるようにしてモデルが指定できるようにする
 	if err != nil {
 		return nil, err
 	}
