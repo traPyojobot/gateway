@@ -17,7 +17,7 @@ type replyResponce struct { //TODO ちゃんと決める
 	Text string `json:"message"`
 }
 
-func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプロパティは切り捨てる
+func GenerateReply(m *model.Message) (*model.Message, error) {
 	req := &replyRequest{
 		UserID:   m.UserID,
 		UserName: m.UserName,
