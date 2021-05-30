@@ -12,10 +12,10 @@ import (
 
 const (
 	GroupReply     = "reply"
-	GroupMonologue = "monologue" //TODO 読み込み処理を書く
+	GroupMonologue = "monologue"
 )
 
-var mlModel map[string][]model.MLModel //TODO 読み込み処理を書く
+var mlModel map[string][]model.MLModel
 
 func LoadModel() error {
 	_model, err := loader.LoadMLModel()
@@ -37,7 +37,7 @@ func CreateMessageByGroup(group string, json []byte) ([]byte, error) {
 }
 
 func sendRequest(m model.MLModel, json []byte) ([]byte, error) {
-	resp, err := http.Post(m.Url.String(), "application/json", bytes.NewBuffer(json)) //仮配置
+	resp, err := http.Post(m.Url, "application/json", bytes.NewBuffer(json))
 	if err != nil {
 		return nil, err
 	}

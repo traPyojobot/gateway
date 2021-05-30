@@ -2,7 +2,6 @@ package loader
 
 import (
 	"io/ioutil"
-	"net/url"
 
 	"github.com/traPyojobot/gateway/pkg/model"
 	"gopkg.in/yaml.v3"
@@ -33,13 +32,12 @@ func LoadMLModel() (map[string][]model.MLModel, error) {
 	for _, g := range c.Group {
 		var s []model.MLModel
 		for _, m := range g.Model {
-			u, err := url.Parse(m.Url)
 			if err != nil {
 				return nil, err
 			}
 			s = append(s, model.MLModel{
 				Name: m.Name,
-				Url:  u,
+				Url:  m.Url,
 			})
 		}
 		res[g.GroupName] = s
