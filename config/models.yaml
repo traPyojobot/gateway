@@ -5,7 +5,7 @@
 #     url: url
 
 group:
-  name: reply
-  models:
-    - name: test
-      url: http://postman.hijiki51.trap.show/
+  - name: reply
+    models:
+      - name: test
+        url: http://postman.hijiki51.trap.show/

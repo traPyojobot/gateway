@@ -17,15 +17,15 @@ type mlmodel struct {
 
 type group struct {
 	GroupName string    `yaml:"name"`
-	Model     []mlmodel `yaml:"model,inline"`
+	Model     []mlmodel `yaml:"models"`
 }
 
 type Config struct {
-	Group []group `yaml:"group,inline"`
+	Group []group `yaml:"group"`
 }
 
 func LoadMLModel() (map[string][]model.MLModel, error) {
-	var res map[string][]model.MLModel
+	res := map[string][]model.MLModel{}
 	c, err := loadConfig()
 	if err != nil {
 		return nil, err
