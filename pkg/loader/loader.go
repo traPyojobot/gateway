@@ -8,7 +8,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-const configPath = "./config/models.yaml"
+const ConfigPath = "./config/models.yaml"
 
 type mlmodel struct {
 	Name string `yaml:"name"`
@@ -48,7 +48,7 @@ func LoadMLModel() (map[string][]model.MLModel, error) {
 }
 
 func loadConfig() (*Config, error) {
-	data, err := ioutil.ReadFile(configPath)
+	data, err := ioutil.ReadFile(ConfigPath)
 	if err != nil {
 		return nil, err
 	}
