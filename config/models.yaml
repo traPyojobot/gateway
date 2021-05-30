@@ -1,0 +1,12 @@
+# writing example
+# group:
+#   - name: Group_name(reply)
+#     models:
+#       - name: ML1
+#         url: http://postman.hijiki51.trap.show/
+
+group:
+  - name: reply
+    models:
+      - name: test
+        url: http://postman.hijiki51.trap.show/

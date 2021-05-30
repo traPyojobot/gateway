@@ -2,21 +2,22 @@ package standerd
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/traPyojobot/gateway/pkg/model"
 	"github.com/traPyojobot/gateway/pkg/proxy"
 )
 
-type replyRequest struct {
+type replyRequest struct { //TODO ちゃんと決める
 	UserID   string `json:"user_id"`
 	UserName string `json:"user_name"`
 	Text     string `json:"text"`
 }
-type replyResponce struct {
-	Text string `json:"message"`
+type replyResponce struct { //TODO ちゃんと決める
+	Text string `json:"text"`
 }
 
-func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプロパティは切り捨てる
+func GenerateReply(m *model.Message) (*model.Message, error) {
 	req := &replyRequest{
 		UserID:   m.UserID,
 		UserName: m.UserName,
@@ -26,7 +27,7 @@ func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプ
 	if err != nil {
 		return nil, err
 	}
-	b, err := proxy.CreateMessageByGroup(proxy.GroupReply, j)
+	b, err := proxy.CreateMessageByGroup(proxy.GroupReply, j) //TODO ここら辺も選べるようにしてモデルが指定できるようにする
 	if err != nil {
 		return nil, err
 	}
@@ -36,7 +37,8 @@ func GenerateReply(m *model.Message) (*model.Message, error) { //ひとまずプ
 		return nil, err
 	}
 	res := &model.Message{
-		Text: text.Text,
+		Text:      text.Text,
+		CreatedAt: time.Now(),
 	}
 	return res, nil
 }
