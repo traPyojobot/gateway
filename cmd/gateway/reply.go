@@ -8,7 +8,7 @@ import (
 	"github.com/traPyojobot/gateway/pkg/model"
 )
 
-func PostReply(c echo.Context) error {
+func GetReply(c echo.Context) error {
 	m := &model.Message{}
 	if err := c.Bind(m); err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
