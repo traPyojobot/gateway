@@ -10,3 +10,8 @@ group:
     models:
       - name: test
         url: http://postman.hijiki51.trap.show/
+  - name: monologue
+    models:
+      - name: test
+        url: http://postman.hijiki51.trap.show/
+
