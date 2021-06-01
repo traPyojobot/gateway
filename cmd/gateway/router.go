@@ -6,7 +6,7 @@ func SetUp(e *echo.Echo) {
 	api := e.Group("/api")
 
 	apiReply := api.Group("/reply")
-	apiReply.POST("", PostReply)
+	apiReply.GET("", GetReply)
 
 	apiMonologue := api.Group("/monologue")
 	apiMonologue.GET("", GetMonologue)
