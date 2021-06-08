@@ -17,9 +17,9 @@ jobs:
         chmod 600 ~/deploy_key.pem
         git config --local user.email "github@actions"
         git config --local user.name "github"
-        git config remote.origin.url "ssh://git@git.trap.jp:2200/Chat-Yojo-Bot/gateway.git"
     - name: Push changes
       env:
         GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
       run: |
+        git fetch --unshallow origin
         git push -f ssh://git@git.trap.jp:2200/Chat-Yojo-Bot/gateway.git main
