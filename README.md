@@ -1,3 +1,3 @@
 # gateway
-trapyojobot gateway api
+trapyojobot gateway
 https://md.trap.jp/hIWP1XqZTO-RraJcjOHqOQ
