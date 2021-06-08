@@ -21,4 +21,6 @@ jobs:
     - name: Push changes
       env:
         GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
-      run: git push origin main
+      run: |
+        git pull origin main
+        git push origin main
