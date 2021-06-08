@@ -22,5 +22,4 @@ jobs:
       env:
         GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
       run: |
-        git pull --allow-unrelated-histories ssh://git@git.trap.jp:2200/Chat-Yojo-Bot/gateway.git main
-        git push ssh://git@git.trap.jp:2200/Chat-Yojo-Bot/gateway.git main
+        git push -f ssh://git@git.trap.jp:2200/Chat-Yojo-Bot/gateway.git main
