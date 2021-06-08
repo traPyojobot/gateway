@@ -14,6 +14,7 @@ jobs:
     - name: Set config
       run: |
         echo "${{ secrets.GITEA_TOKEN }}" > ~/deploy_key.pem
+        chmod 600 ~/deploy_key.pem
         git config --local user.email "github@actions"
         git config --local user.name "github"
         git config remote.origin.url "ssh://git@git.trap.jp:2200/Chat-Yojo-Bot/gateway.git"
