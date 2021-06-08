@@ -9,12 +9,14 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-    - name: set config
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set config
       run: |
         echo "${{ secrets.GITEA_TOKEN }}" > ~/deploy_key.pem
-        git config --global user.email "github@actions"
-        git config --global user.name "github"
-        git config remote.origin.url "https://git.trap.jp/Chat-Yojo-Bot/gateway"
+        git config --local user.email "github@actions"
+        git config --local user.name "github"
+        git config remote.origin.url "ssh://git@git.trap.jp:2200/Chat-Yojo-Bot/gateway.git"
     - name: Push changes
       env:
         GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
