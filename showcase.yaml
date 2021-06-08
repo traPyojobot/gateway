@@ -1,0 +1,10 @@
+
+  
+branch:
+  main:
+    type: runtime
+    entrypoint: ./main
+    startup: |
+      go mod download
+      go build -o main
+    http_proxy: 1323
