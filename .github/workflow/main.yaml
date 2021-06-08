@@ -1,0 +1,21 @@
+name: main
+
+on:
+  push:
+    branches:
+     - 'main'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: set config
+      run: |
+        echo "${{ secrets.GITEA_TOKEN }}" > ~/deploy_key.pem
+        git config --local user.email "github@actions"
+        git config --local user.name "github"
+        git config remote.origin.url "https://git.trap.jp/Chat-Yojo-Bot/gateway"
+    - name: Push changes
+      env:
+        GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+      run: git push origin main
