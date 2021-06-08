@@ -12,8 +12,8 @@ jobs:
     - name: set config
       run: |
         echo "${{ secrets.GITEA_TOKEN }}" > ~/deploy_key.pem
-        git config --local user.email "github@actions"
-        git config --local user.name "github"
+        git config --global user.email "github@actions"
+        git config --global user.name "github"
         git config remote.origin.url "https://git.trap.jp/Chat-Yojo-Bot/gateway"
     - name: Push changes
       env:
